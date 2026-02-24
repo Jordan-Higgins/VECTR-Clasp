@@ -1,0 +1,29 @@
+Package: VECTRClasp
+Type: Package
+Title: Automated DeepLabCut Processing and Vector-Based Behavioural Analysis
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Jordan", "Higgins",
+      email = "jordanhiggins24@rcsi.com",
+      role = c("aut", "cre")
+    )
+  )
+Description: Automates extraction, cleaning, relative coordinate calculation, likelihood assessment, and angle computation from DeepLabCut CSVs.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    scales,
+    tools
+Suggests:
+    ggplot2,
+    viridis,
+    MASS,
+    circular,
+    gganimate,
+    gifski,
+    dplyr,
+    tools
+RoxygenNote: 7.3.3
