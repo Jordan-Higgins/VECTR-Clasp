@@ -77,8 +77,7 @@ analyse_angles <- function(folder, mid_angle = 90, deadband = 45) {
 
       # Collapse short jitters and count L↔R transitions
       swing_seq <- rle(data$swing_state)$values
-      swing_count <- sum(diff(swing_seq %in% "Left") != 0 &
-                           swing_seq %in% c("Left", "Right"))
+      swing_count <- sum(swing_seq %in% c("Left", "Right")) #left or right exit out of deadband counts as swing
 
       # Append results
       summary_results <- rbind(
