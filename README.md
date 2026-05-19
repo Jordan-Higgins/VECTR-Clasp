@@ -14,6 +14,22 @@ It provides a unified workflow for:
 
 This package was developed for reproducible, modular analysis of behavioural datasets.
 
+## Installation Guide
+1. Install devtools if you don't have it
+install.packages("devtools")
+
+2. Install package from GitHub
+devtools::install_github("Jordan-Higgins/VECTR-Clasp")
+
+3. Load it (note: no hyphen here)
+library(VECTRClasp)
+
+4. Test that a function works
+?analyse_deeplabcut_data
+
+5. Test functions using simulated CSVs provided in the "Test_data" folder, which have known values
+analyse_deeplabcut_data("C:/Users/X/Test_data")
+
 ## Core Commands
 
 Each function can be run independently and accepts a full path to your data directory.
