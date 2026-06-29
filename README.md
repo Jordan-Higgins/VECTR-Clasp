@@ -33,7 +33,7 @@ This package was developed for reproducible, modular analysis of behavioural dat
 
 5. Test the functions using provided experimental mouse CSVs data and simulated CSVs (which have known values in the title) in the "example_data" folder.
    
-      analyse_deeplabcut_data("C:/Users/X/example_data")
+      analyse_deeplabcut_data("C:/Users/X/example_data") 
 
 ## Core Commands
 
