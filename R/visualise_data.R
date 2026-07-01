@@ -79,15 +79,18 @@ visualise_data <- function(folder) {
       if (inherits(data, "try-error") || nrow(data) == 0) next
       if (!all(c("snout_tip_rel_x", "snout_tip_rel_y") %in% names(data))) next
 
-      d <- kde2d(data$snout_tip_rel_x, data$snout_tip_rel_y, n = 300)
+      d <- kde2d(data$snout_tip_rel_x, data$snout_tip_rel_y, n = 600) #resolution increase
       local_max <- max(d$z, na.rm = TRUE)
       xlim <- range(data$snout_tip_rel_x, na.rm = TRUE)
       ylim <- range(data$snout_tip_rel_y, na.rm = TRUE)
 
-      p <- ggplot(data, aes(x = snout_tip_rel_x, y = snout_tip_rel_y)) +
-        stat_density_2d(aes(fill = after_stat(density)), geom = "raster", contour = FALSE, n = 300) +
+      grid_df <- expand.grid(x = d$x, y = d$y)
+      grid_df$density <- as.vector(d$z)
+
+      p <- ggplot(grid_df, aes(x = x, y = y, fill = density)) +
+        geom_raster() +
         scale_fill_viridis_c(option = "plasma", name = "Density",
-                             limits = c(0, local_max * 0.9), oob = scales::squish) +
+                             limits = c(0, local_max * 1), oob = scales::squish) + #adjust maximum density scale here with local_max calc
         coord_equal(expand = TRUE, xlim = xlim, ylim = ylim) +
         scale_y_reverse() +
         labs(
